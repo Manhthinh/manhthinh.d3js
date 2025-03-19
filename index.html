@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Biểu đồ doanh số bán hàng trực quan bằng D3.js">
+    <title>Doanh số bán hàng</title>
+    <script src="https://d3js.org/d3.v7.min.js" defer></script>
+
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .chart-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: none; /* Ẩn tất cả charts ban đầu */
+        }
+        .chart-container.visible {
+            display: block;
+        }
+        .chart-svg {
+            width: 80%;
+            height: 80%;
+        }
+        .navigation {
+            margin: 20px 0;
+        }
+        .nav-btn {
+            padding: 10px 15px;
+            margin: 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .nav-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Biểu đồ Doanh số Bán hàng</h1>
+    <div class="chart-container visible">
+        <svg id="chart1" class="chart-svg" viewBox="0 0 700 600" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+
+    <div class="chart-container">
+        <svg id="chart2" class="chart-svg" viewBox="0 0 650 700" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+    <div class="chart-container">
+        <svg id="chart3" class="chart-svg" viewBox="0 0 700 600" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+    <div class="chart-container">
+        <svg id="chart4" class="chart-svg" viewBox="0 0 750 600" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+    <div class="chart-container">
+        <svg id="chart5" class="chart-svg" viewBox="0 0 750 600" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+    <div class="chart-container">
+        <svg id="chart6" class="chart-svg" viewBox="0 0 700 600" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+    <div class="chart-container">
+        <svg id="chart7" class="chart-svg" viewBox="0 0 700 600" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+    <div class="chart-container">
+        <svg id="chart8" class="chart-svg" viewBox="0 0 700 600" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+    <div class="chart-container">
+        <svg id="chart9" class="chart-svg" viewBox="0 0 1350 1100" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+    <div class="chart-container">
+        <svg id="chart10" class="chart-svg" viewBox="0 0 1350 1100" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+    <div class="chart-container">
+        <svg id="chart11" class="chart-svg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+    <div class="chart-container">
+        <svg id="chart12" class="chart-svg" viewBox="0 0 1350 600" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+
+    <!-- Import JS -->
+    <script src="js/chart1.js" defer></script>
+    <script src="js/chart2.js" defer></script>
+    <script src="js/chart3.js" defer></script>
+    <script src="js/chart4.js" defer></script>
+    <script src="js/chart5.js" defer></script>
+    <script src="js/chart6.js" defer></script>
+    <script src="js/chart7.js" defer></script>
+    <script src="js/chart8.js" defer></script>
+    <script src="js/chart9.js" defer></script>
+    <script src="js/chart10.js" defer></script>
+    <script src="js/chart11.js" defer></script>
+    <script src="js/chart12.js" defer></script>
+    <script src="js/scroll.js" defer></script>
+
+    <script>
+        let currentChartIndex = 0;
+        const charts = document.querySelectorAll(".chart-container");
+
+        function changeChart(direction) {
+            charts[currentChartIndex].classList.remove("visible");
+            currentChartIndex += direction;
+
+            if (currentChartIndex < 0) currentChartIndex = charts.length - 1;
+            if (currentChartIndex >= charts.length) currentChartIndex = 0;
+
+            charts[currentChartIndex].classList.add("visible");
+        }
+        window.onerror = function (message, source, lineno, colno, error) {
+            alert("Lỗi: " + message + "\n" + source + ":" + lineno);
+            return false;
+        };
+    </script>
+</body>
+</html>
